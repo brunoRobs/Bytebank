@@ -1,31 +1,31 @@
-class Account(private val accountHolder: String, private val accountNumber: Int) {
+class Conta(private val titular: String, private val numero: Int) {
 
-    var accountBalance: Double = 0.0
+    var saldo: Double = 0.0
         private set
 
     fun accountInfos() {
-        println("Account holder: " + accountHolder)
-        println("Account number: " + accountNumber)
-        println("Account balance: " + accountBalance)
+        println("Account holder: " + titular)
+        println("Account number: " + numero)
+        println("Account balance: " + saldo)
     }
 
-    fun withdrawal(value: Double): Boolean {
-        if (this.accountBalance >= value && value > 0.0) {
-            this.accountBalance -= value
+    fun sacar(valor: Double): Boolean {
+        if (this.saldo >= valor && valor > 0.0) {
+            this.saldo -= valor
             return true
         }
         return false
     }
 
-    fun deposit(value: Double) {
-        if (value > 0.0) {
-            this.accountBalance += value
+    fun depositar(valor: Double) {
+        if (valor > 0.0) {
+            this.saldo += valor
         }
     }
 
-    fun transfer(value: Double, account: Account) {
-        if (withdrawal(value)) {
-            account.deposit(value)
+    fun transferir(valor: Double, conta: Conta) {
+        if (sacar(valor)) {
+            conta.depositar(valor)
         }
     }
 }
