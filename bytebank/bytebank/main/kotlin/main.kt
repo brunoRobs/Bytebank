@@ -1,44 +1,31 @@
-class Conta(private val titular: String, private val numeroDaConta: Int) {
+class Account(private val accountHolder: String, private val accountNumber: Int) {
 
-    var saldo: Double = 0.0
+    var accountBalance: Double = 0.0
         private set
 
-    fun dadosDaConta() {
-        println("Titular: " + titular)
-        println("Numero da conta: " + numeroDaConta)
-        println("Saldo: " + saldo)
+    fun accountInfos() {
+        println("Account holder: " + accountHolder)
+        println("Account number: " + accountNumber)
+        println("Account balance: " + accountBalance)
     }
 
-    fun saque(valor: Double): Boolean {
-        if (this.saldo >= valor && valor > 0.0) {
-            this.saldo -= valor
-            // println("Saque realizado")
+    fun withdrawal(value: Double): Boolean {
+        if (this.accountBalance >= value && value > 0.0) {
+            this.accountBalance -= value
             return true
         }
-        // println("Falha no saque: valor invalido")
         return false
     }
 
-    fun deposito(valor: Double) {
-        if (valor > 0.0) {
-            this.saldo += valor
-            // println("Deposito realizado")
-        }
-        // println("Falha no deposito: valor invalido")
-    }
-
-    fun transferencia(valor: Double, destinatario: Conta?) {
-        if (destinatario != null) {
-            if (saque(valor)) {
-                destinatario.deposito(valor)
-                //println("Transferencia realizada")
-            }
-            //println("Falha na transferencia")
+    fun deposit(value: Double) {
+        if (value > 0.0) {
+            this.accountBalance += value
         }
     }
-}
 
-fun main() {
-    println("Bem vindo ao Bytebank")
-    val minhaConta = Conta("Bruno Roberto", 2077)
+    fun transfer(value: Double, account: Account) {
+        if (withdrawal(value)) {
+            account.deposit(value)
+        }
+    }
 }
