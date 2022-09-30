@@ -8,9 +8,9 @@ fun main() {
     val bruno = ContaCorrente(
         Cliente(
             "Bruno",
-            "13610895470",
-            Endereco("Avenida", 1539, "Janga", "Paulista", "Pernambuco", "53439000", "Apt 401"),
-            210601
+            "00000000000",
+            Endereco("", 0, "", "", "", "", ""),
+            0
         ), 1
     )
 
